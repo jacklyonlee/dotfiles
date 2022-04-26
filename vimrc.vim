@@ -39,7 +39,7 @@ let g:ctrlp_prompt_mappings = {
 function! TabOrComplete() abort
     if pumvisible()
         return "\<c-n>"
-    elseif col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^[[:keyword:][:ident:]]'
+    elseif col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~? '^[[:keyword:][:ident:]]'
         return "\<c-r>=completor#do('complete')\<cr>"
     else
         return "\<tab>"
