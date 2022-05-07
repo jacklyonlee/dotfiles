@@ -10,7 +10,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'maralla/completor.vim'
-Plug 'Yggdroot/indentLine'
 Plug 'justinmk/vim-sneak'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'wincent/terminus'
@@ -63,21 +62,27 @@ nnoremap <silent>d "_d
 vnoremap <silent>d "_d
 
 " setup appearance
+set splitbelow
+set splitright
 set number
 set relativenumber
 set cursorline
 set noshowmode
 set noshowcmd
-set splitbelow
-set splitright
-set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
 set pumheight=10
 set background=dark
 silent! colorscheme hybrid
 filetype plugin indent on
+
+" setup spacing
+set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+augroup filetype tex
+    \ setlocal tabstop=2 |
+    \ setlocal softtabstop=2 |
+    \ setlocal shiftwidth=2
 
 " fix backspace on mac
 set backspace=indent,eol,start
