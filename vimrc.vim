@@ -1,4 +1,5 @@
 " ======= vim keybindings =======
+" open-tree             SPC f
 " open-fzf              SPC .
 " open-pane             SPC v
 " next-pane             SPC w
@@ -10,6 +11,8 @@
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'maralla/completor.vim'
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern-hijack.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'wincent/terminus'
@@ -22,8 +25,28 @@ let g:lightline = {
             \ 'colorscheme': 'deus',
             \ }
 
+" setup fern
+let g:fern#disable_default_mappings = 1
+noremap <silent><space>f :Fern . -drawer -reveal=% -toggle -width=50<cr><c-w>=
+function! s:init_fern() abort
+  nmap <buffer><expr>
+      \ <Plug>(fern-my-expand-or-collapse)
+      \ fern#smart#leaf(
+      \   "\<Plug>(fern-action-collapse)",
+      \   "\<Plug>(fern-action-expand)",
+      \   "\<Plug>(fern-action-collapse)",
+      \ )
+  nmap <buffer><nowait> l <Plug>(fern-my-expand-or-collapse)
+  nmap <buffer> o <Plug>(fern-action-open:tabedit)
+endfunction
+augroup fern-custom
+  autocmd! *
+  autocmd FileType fern call s:init_fern()
+augroup END
+
 " setup ctrlp
 let g:ctrlp_map='<space>.'
+let g:ctrlp_max_files = 0
 let g:ctrlp_use_caching = 0
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
