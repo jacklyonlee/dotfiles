@@ -48,7 +48,7 @@ augroup END
 let g:ctrlp_map='<space>.'
 let g:ctrlp_max_files = 0
 let g:ctrlp_use_caching = 0
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = {
             \ 'dir':  '\v[\/]\.(git)$',
             \ 'file': '\v\.(exe|so|dll|zip|gz|swp|swo|png|pdf)$'
