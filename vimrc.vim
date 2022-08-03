@@ -37,7 +37,7 @@ function! s:init_fern() abort
       \   "\<Plug>(fern-action-collapse)",
       \ )
   nmap <buffer><nowait> l <Plug>(fern-my-expand-or-collapse)
-  nmap <buffer> o <Plug>(fern-action-open:tabedit)
+  nmap <buffer> <cr> <Plug>(fern-action-open:tabedit)
 endfunction
 augroup fern-custom
   autocmd! *
